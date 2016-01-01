@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpiderWebScoreView">
+        <attr name="dimensionCount" format="integer"/>
+        <attr name="hierarchyCount" format="integer"/>
+        <attr name="maxScore" format="float"/>
+        <attr name="lineColor" format="color"/>
+        <attr name="lineWidth" format="dimension"/>
+        <attr name="scoreColor" format="color"/>
+        <attr name="scoreStrokeColor" format="color"/>
+        <attr name="scoreStrokeWidth" format="dimension"/>
+        <attr name="disableScoreStroke" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="CircularLayout">
+        <attr name="diameter" format="dimension"/>
+        <attr name="spacing" format="dimension"/>
+    </declare-styleable>
+</resources>
