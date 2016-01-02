@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2015 Peng fei Pan <sky@xiaopan.me>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package me.xiaopan.swsv;
 
 import android.content.Context;
@@ -14,7 +30,7 @@ import android.view.View;
 public class SpiderWebScoreView extends View {
     private int dimensionCount = 5; // 整个蛛网分几个维度（几有个维度就有几个角，就是几边形）
     private int hierarchyCount = 5;  // 整个蛛网分多少层（例如最大分数是10分，分5层，那么每层就代表2分）
-    private float maxScore = 10;   // 最大分数
+    private float maxScore = 10f;   // 最大分数
     private float offsetAngle = 0;    // 偏移角度，有助于让整个图形左右对称
     private int lineColor = 0xFF000000; // 蛛网线条的颜色
     private float lineWidth = -1; // 蛛网线条的宽度
