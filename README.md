@@ -19,6 +19,7 @@ dependencies{
 }
 ```
 `lastVersionName`是最新版本名称的意思，你可以在[release](https://github.com/xiaopansky/SpiderWebScoreView/releases)页面看到最新的版本名称
+
 最低支持`Android2.2`
 
 ####2. Use in layout
@@ -65,7 +66,6 @@ protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.activity_main);
 
     SpiderWebScoreView spiderWebScoreView1 = (SpiderWebScoreView) findViewById(R.id.spiderWeb_mainActivity_1);
-
     CircularLayout circularLayout1 = (CircularLayout) findViewById(R.id.layout_mainActivity_circular1);
 
 	Score[] scores = new Score[]{
@@ -113,22 +113,25 @@ public static class Score{
 ```
 
 ####4. Attributes
+
 SpiderWebScoreView
+
 |Name|介绍|对应方法|缺省值|
-|--|--|--|--|
-|dimensionCount|设置蛛网图形有多少个角|会在setScores(float, float[])方法中根据scores的长度设置|5|
+|:--|:--|:--|:--|
+|dimensionCount|设置蛛网图形有多少个角|会在setScores(float, float[])方法中根据scores的长度来覆盖此参数|5|
 |hierarchyCount|设置蛛网图形有多少层|setHierarchyCount(int)|5|
 |maxScore|最大分值|setScores(float, float[])方法的第一个参数就是maxScore|10f|
-|lineColor|蛛网线条的颜色|setLineColor(int)|<font color=#000000>0xFF000000</font>|
+|lineColor|蛛网线条的颜色|setLineColor(int)|0xFF000000|
 |lineWidth|蛛网线条的宽度|setLineWidth(float)|-1(不设置，Paint默认宽度)|
-|scoreColor|分数图形的颜色|setScoreColor(int)|<font color=#F65801>0x80F65801</font>|
-|scoreStrokeColor|分数图形描边的颜色|setScoreStrokeColor(int)|<font color=#F65801>0xFFF65801</font>|
+|scoreColor|分数图形的颜色|setScoreColor(int)|0x80F65801|
+|scoreStrokeColor|分数图形描边的颜色|setScoreStrokeColor(int)|0xFFF65801|
 |scoreStrokeWidth|分数图形描边的宽度|setScoreStrokeWidth(float)|-1(不设置，Paint默认宽度)
 |disableScoreStroke|禁用分数图形描边|setDisableScoreStroke(boolean)|false|
 
 CircularLayout
+
 |Name|介绍|对应方法|缺省值|
-|--|--|--|--|
+|:--|:--|:--|:--|
 |spacing|设置子View与圆圈之间的距离|setSpacing(int)|8dp|
 
 更多示例请参考sample源码
