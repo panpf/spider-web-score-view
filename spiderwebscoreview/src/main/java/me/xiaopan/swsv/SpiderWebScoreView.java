@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Peng fei Pan <sky@xiaopan.me>
+ * Copyright (C) 2016 Peng fei Pan <sky@xiaopan.me>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,27 +28,24 @@ import android.view.View;
  * 蛛网评分图，支持任意条边以及任意层级
  */
 public class SpiderWebScoreView extends View {
-    private int dimensionCount = 5; // 整个蛛网分几个维度（几有个维度就有几个角，就是几边形）
+    private int angleCount = 5; // 整个蛛网有几个角
     private int hierarchyCount = 5;  // 整个蛛网分多少层（例如最大分数是10分，分5层，那么每层就代表2分）
-    private float maxScore = 10f;   // 最大分数
-    private float offsetAngle = 0;    // 偏移角度，有助于让整个图形左右对称
     private int lineColor = 0xFF000000; // 蛛网线条的颜色
     private float lineWidth = -1; // 蛛网线条的宽度
+
+    private float maxScore = 10f;   // 最大分数
+    private float[] scores;  // 分数列表
     private int scoreColor = 0x80F65801; // 分数图形的颜色
     private int scoreStrokeColor = 0xFFF65801; // 分数图形描边的颜色
     private float scoreStrokeWidth = -1; // 分数图形描边的宽度
     private boolean disableScoreStroke; // 禁用分数图形的描边
-    private float[] scores;  // 分数列表
+    private Paint scorePaint;
+    private Paint scoreStrokePaint;
 
     private float centerX;    // 中心点X坐标
     private float centerY;    // 中心点Y坐标
     private float radius; // 整个蛛网图的半径
-    private float averageRadius;    // 每层平均半径
-    private float averageAngle; // 每个维度的平均角度
-
     private Paint linePaint;
-    private Paint scorePaint;
-    private Paint scoreStrokePaint;
     private Path path;
 
     public SpiderWebScoreView(Context context) {
@@ -75,7 +72,7 @@ public class SpiderWebScoreView extends View {
         linePaint.setColor(lineColor);
         linePaint.setStyle(Paint.Style.STROKE);
         linePaint.setAntiAlias(true);
-        if(lineWidth >= 0){
+        if(lineWidth > 0){
             linePaint.setStrokeWidth(lineWidth);
         }
 
@@ -88,9 +85,9 @@ public class SpiderWebScoreView extends View {
 
         if(isInEditMode()){
             float[] randomScoreArray = new float[]{7.0f, 8.0f, 5.0f, 5.0f, 8.0f};
-            float[] testScores = new float[dimensionCount];
+            float[] testScores = new float[angleCount];
             int index = 0;
-            for(int w = 0; w < dimensionCount; w++){
+            for(int w = 0; w < angleCount; w++){
                 testScores[w] = randomScoreArray[index++% randomScoreArray.length];
             }
             setScores(10f, testScores);
@@ -100,7 +97,7 @@ public class SpiderWebScoreView extends View {
     private void parseAttrs(Context context, AttributeSet attrs){
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SpiderWebScoreView);
 
-        setDimensionCount(typedArray.getInt(R.styleable.SpiderWebScoreView_dimensionCount, dimensionCount));
+        setAngleCount(typedArray.getInt(R.styleable.SpiderWebScoreView_angleCount, angleCount));
         setHierarchyCount(typedArray.getInt(R.styleable.SpiderWebScoreView_hierarchyCount, hierarchyCount));
         setMaxScore(typedArray.getFloat(R.styleable.SpiderWebScoreView_maxScore, maxScore));
 
@@ -114,23 +111,20 @@ public class SpiderWebScoreView extends View {
         typedArray.recycle();
     }
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        reset();
+    }
+
     private void reset(){
-        if(dimensionCount != 0 && hierarchyCount != 0){
+        if(angleCount != 0 && hierarchyCount != 0){
             int viewWidth = getWidth();
             int viewHeight = getHeight();
             centerX = viewWidth / 2;
             centerY = viewHeight / 2;
             radius = Math.min(viewWidth, viewHeight) / 2;
-            averageRadius = radius / hierarchyCount;
-            averageAngle = 360 / dimensionCount;
-            offsetAngle = averageAngle > 0 && dimensionCount % 2 == 0 ? averageAngle / 2 : 0;
         }
-    }
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        reset();
     }
 
     @Override
@@ -147,6 +141,7 @@ public class SpiderWebScoreView extends View {
      * @param canvas Canvas
      */
     private void drawAllHierarchy(Canvas canvas) {
+        float averageRadius = radius / hierarchyCount;
         for(int w = 0; w < hierarchyCount; w++){
             drawHierarchyByRadius(canvas, averageRadius *(w+1));
         }
@@ -164,7 +159,9 @@ public class SpiderWebScoreView extends View {
         float nextRadians;
         float nextPointX;
         float nextPointY;
-        for (int position = 0; position < dimensionCount; position++) {
+        float averageAngle = 360 / angleCount;
+        float offsetAngle = averageAngle > 0 && angleCount % 2 == 0 ? averageAngle / 2 : 0;
+        for (int position = 0; position < angleCount; position++) {
             nextAngle = offsetAngle + (position * averageAngle);
             nextRadians = (float) Math.toRadians(nextAngle);
             nextPointX = (float) (centerX + Math.sin(nextRadians) * currentRadius);
@@ -190,7 +187,9 @@ public class SpiderWebScoreView extends View {
         float nextRadians;
         float nextPointX;
         float nextPointY;
-        for(int position = 0; position < dimensionCount; position++){
+        float averageAngle = 360 / angleCount;
+        float offsetAngle = averageAngle > 0 && angleCount % 2 == 0 ? averageAngle / 2 : 0;
+        for(int position = 0; position < angleCount; position++){
             nextAngle = offsetAngle + (position * averageAngle);
             nextRadians = (float) Math.toRadians(nextAngle);
             nextPointX = (float) (centerX + Math.sin(nextRadians) * radius);
@@ -216,7 +215,9 @@ public class SpiderWebScoreView extends View {
         float nextPointX;
         float nextPointY;
         float currentRadius;
-        for (int position = 0; position < dimensionCount; position++) {
+        float averageAngle = 360 / angleCount;
+        float offsetAngle = averageAngle > 0 && angleCount % 2 == 0 ? averageAngle / 2 : 0;
+        for (int position = 0; position < angleCount; position++) {
             currentRadius = (scores[position] / maxScore) * radius;
             nextAngle = offsetAngle + (position * averageAngle);
             nextRadians = (float) Math.toRadians(nextAngle);
@@ -240,7 +241,7 @@ public class SpiderWebScoreView extends View {
                 scoreStrokePaint.setColor(scoreStrokeColor);
                 scoreStrokePaint.setStyle(Paint.Style.STROKE);
                 scoreStrokePaint.setAntiAlias(true);
-                if(scoreStrokeWidth >= 0){
+                if(scoreStrokeWidth > 0){
                     scoreStrokePaint.setStrokeWidth(scoreStrokeWidth);
                 }
             }
@@ -250,13 +251,13 @@ public class SpiderWebScoreView extends View {
 
     /**
      * 设置蛛网有多少个角
-     * @param dimensionCount 蛛网有多少个角
+     * @param angleCount 蛛网有多少个角
      */
-    private void setDimensionCount(int dimensionCount) {
-        if(dimensionCount <= 2){
-            throw new IllegalArgumentException("dimensionCount Can not be less than or equal to 2");
+    private void setAngleCount(int angleCount) {
+        if(angleCount <= 2){
+            throw new IllegalArgumentException("angleCount Can not be less than or equal to 2");
         }
-        this.dimensionCount = dimensionCount;
+        this.angleCount = angleCount;
         reset();
         postInvalidate();
     }
@@ -283,7 +284,7 @@ public class SpiderWebScoreView extends View {
         }
         setMaxScore(maxScore);
         this.scores = scores;
-        this.dimensionCount = scores.length;
+        this.angleCount = scores.length;
         reset();
         postInvalidate();
     }
@@ -322,17 +323,6 @@ public class SpiderWebScoreView extends View {
         if(linePaint != null){
             linePaint.setStrokeWidth(lineWidth);
         }
-        postInvalidate();
-    }
-
-    /**
-     * 设置偏移角度，默认会根据子View个数计算偏移角度，保证整个图形左右对称
-     * @param offsetAngle 偏移角度
-     */
-    @SuppressWarnings("unused")
-    public void setOffsetAngle(float offsetAngle) {
-        offsetAngle %= 360;
-        this.offsetAngle = offsetAngle;
         postInvalidate();
     }
 

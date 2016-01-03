@@ -27,7 +27,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
-                    app:dimensionCount="3"
+                    app:angleCount="3"
                     app:hierarchyCount="3" />
 
                 <me.xiaopan.swsv.CircularLayout
@@ -120,7 +120,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                app:dimensionCount="6"/>
+                app:angleCount="6"/>
 
             <me.xiaopan.swsv.CircularLayout
                 android:id="@+id/layout_mainActivity_circular5"
@@ -201,7 +201,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
-                    app:dimensionCount="8"
+                    app:angleCount="8"
                     app:hierarchyCount="8" />
 
                 <me.xiaopan.swsv.CircularLayout
@@ -272,7 +272,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
-                    app:dimensionCount="12"
+                    app:angleCount="12"
                     app:hierarchyCount="8" />
 
                 <me.xiaopan.swsv.CircularLayout

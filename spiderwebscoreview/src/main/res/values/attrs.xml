@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Copyright (C) 2015 Peng fei Pan <sky@xiaopan.me>
+    Copyright (C) 2016 Peng fei Pan <sky@xiaopan.me>
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 
 <resources>
     <declare-styleable name="SpiderWebScoreView">
-        <attr name="dimensionCount" format="integer"/>
+        <attr name="angleCount" format="integer"/>
         <attr name="hierarchyCount" format="integer"/>
         <attr name="maxScore" format="float"/>
         <attr name="lineColor" format="color"/>

@@ -118,7 +118,7 @@ SpiderWebScoreView
 
 |Name|介绍|对应方法|缺省值|
 |:--|:--|:--|:--|
-|dimensionCount|设置蛛网图形有多少个角|会在setScores(float, float[])方法中根据scores的长度来覆盖此参数|5|
+|angleCount|设置蛛网图形有多少个角|会在setScores(float, float[])方法中根据scores的长度来覆盖此参数|5|
 |hierarchyCount|设置蛛网图形有多少层|setHierarchyCount(int)|5|
 |maxScore|最大分值|setScores(float, float[])方法的第一个参数就是maxScore|10f|
 |lineColor|蛛网线条的颜色|setLineColor(int)|0xFF000000|
@@ -138,7 +138,7 @@ CircularLayout
 
 License
 -------
-	Copyright (C) 2015 Peng fei Pan <sky@xiaopan.me>
+	Copyright (C) 2016 Peng fei Pan <sky@xiaopan.me>
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.

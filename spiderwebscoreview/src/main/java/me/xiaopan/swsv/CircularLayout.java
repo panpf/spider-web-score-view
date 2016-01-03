@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Peng fei Pan <sky@xiaopan.me>
+ * Copyright (C) 2016 Peng fei Pan <sky@xiaopan.me>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,14 +36,11 @@ public class CircularLayout extends ViewGroup {
     private static final int LOCATION_WEST_NORTH = 7;
     private static final int LOCATION_WEST_SOUTH = 8;
 
-    private float offsetAngle;    // 偏移角度，有助于让整个图形左右对称
     private int spacing;    // 子View与圆环之间的间距
 
     private float centerX;    // 中心点X坐标
     private float centerY;    // 中心点Y坐标
     private float radius;   // 半径
-    private float averageAngle; // 平均角度
-
     private int childCount; // 子View个数
 
     public CircularLayout(Context context) {
@@ -102,8 +99,6 @@ public class CircularLayout extends ViewGroup {
         centerX = viewWidth / 2;
         centerY = viewHeight / 2;
         radius = Math.min(viewWidth, viewHeight) / 2;
-        averageAngle = childCount > 0 ? 360 / childCount : 0;
-        offsetAngle = averageAngle > 0 && childCount % 2 == 0 ? averageAngle / 2 : 0;
     }
 
     @Override
@@ -122,6 +117,8 @@ public class CircularLayout extends ViewGroup {
         int childViewMeasuredHeight;
         float childViewLeft;
         float childViewTop;
+        float averageAngle = childCount > 0 ? 360 / childCount : 0;
+        float offsetAngle = averageAngle > 0 && childCount % 2 == 0 ? averageAngle / 2 : 0;    // 偏移角度，有助于让整个图形左右对称
         for (int position = 0, size = getChildCount(); position < size; position++) {
             childView = getChildAt(position);
             nextAngle = offsetAngle + (position * averageAngle);
@@ -210,16 +207,6 @@ public class CircularLayout extends ViewGroup {
         }else{
             throw new IllegalArgumentException("error angle " + angle);
         }
-    }
-
-    /**
-     * 设置偏移角度，默认会根据子View个数计算偏移角度，保证整个图形左右对称
-     * @param offsetAngle 偏移角度
-     */
-    @SuppressWarnings("unused")
-    public void setOffsetAngle(float offsetAngle) {
-        this.offsetAngle = offsetAngle;
-        requestLayout();
     }
 
     /**
