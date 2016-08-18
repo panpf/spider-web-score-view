@@ -1,7 +1,7 @@
 #![Logo](https://github.com/xiaopansky/SpiderWebScoreView/raw/master/docs/icon.png) SpiderWebScoreView
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SpiderWebScoreView-green.svg?style=true)](https://android-arsenal.com/details/1/4167)
-[![version](https://img.shields.io/bintray/v/xiaopansky/maven/SpiderWebScoreView.svg)](https://bintray.com/xiaopansky/maven/SpiderWebScoreView)
+[![Release Version](https://img.shields.io/github/release/xiaopansky/SpiderWebScoreView.svg)](https://github.com/xiaopansky/SpiderWebScoreView/releases)
 
 SpiderWebScoreView是用于Android上的一个蛛网评分控件
 
@@ -21,7 +21,7 @@ dependencies{
 	compile 'me.xiaopan:spiderwebscoreview:lastVersionName'
 }
 ```
-`lastVersionName`：[![version](https://img.shields.io/bintray/v/xiaopansky/maven/SpiderWebScoreView.svg)](https://bintray.com/xiaopansky/maven/SpiderWebScoreView) （不带v）
+`lastVersionName`：[![Release Version](https://img.shields.io/github/release/xiaopansky/SpiderWebScoreView.svg)](https://github.com/xiaopansky/SpiderWebScoreView/releases)`（不带v）`
 
 最低支持`Android2.2`
 
