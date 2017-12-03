@@ -1,67 +1,76 @@
-#![Logo](https://github.com/xiaopansky/SpiderWebScoreView/raw/master/docs/icon.png) SpiderWebScoreView
+# ![logo_image] SpiderWebScoreView
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SpiderWebScoreView-green.svg?style=true)](https://android-arsenal.com/details/1/4167)
-[![Release Version](https://img.shields.io/github/release/xiaopansky/SpiderWebScoreView.svg)](https://github.com/xiaopansky/SpiderWebScoreView/releases)
+![Platform][platform_image]
+[![API][min_api_image]][min_api_link]
+[![Android Arsenal][android_arsenal_image]][android_arsenal-link]
+[![Release Version][release_version_image]][release_version-link]
 
-SpiderWebScoreView是用于Android上的一个蛛网评分控件
+SpiderWebScoreView 是一个蛛网评分控件，可以方便的显示任意层级任意维度的数据
 
-![sample](https://github.com/xiaopansky/SpiderWebScoreView/raw/master/docs/sample.png)
+![sample_image]
 
-###Features
->* 支持`任意个角`以及`任意层级`
->* 蛛网图形外边的分数文案支持`任意样式`
->* 不管是多少维度都可`左右对称`
+## 特点
+* 支持`任意个角`以及`任意层级`
+* 蛛网图形外边的分数文案支持`任意样式`
+* 不管是多少维度都可`左右对称`
 
-###Usage Guide
+## 开始使用
 
-####1. Import SpiderWebScoreView
-add gradle dependency
+### 1. 导入 SpiderWebScoreView
+
+在 app 的 build.gradle 文件的 dependencies 节点中加入依赖
+
 ```groovy
 dependencies{
-	compile 'me.xiaopan:spiderwebscoreview:lastVersionName'
+	implementation 'me.panpf:spider-web-score-view:$lastVersionName'
 }
 ```
-`lastVersionName`：[![Release Version](https://img.shields.io/github/release/xiaopansky/SpiderWebScoreView.svg)](https://github.com/xiaopansky/SpiderWebScoreView/releases)`（不带v）`
 
-最低支持`Android2.2`
+请自行替换 `$lastVersionName` 为最新的版本：[![Release Version][release_version_image]][release_version-link] `（不要v）`
 
-####2. Use in layout
-首先在布局中使用声明SpiderWebScoreView和CircularLayout
+最低支持 `Android2.3`
+
+### 2. 在布局中使用
+
+在布局中使用声明 SpiderWebScoreView 和 CircularLayout，如下：
+
 ```xml
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:clipChildren="false">
 
-    <me.xiaopan.swsv.SpiderWebScoreView
+    <me.panpf.swsv.SpiderWebScoreView
         android:id="@+id/spiderWeb_mainActivity_1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center" />
 
-    <me.xiaopan.swsv.CircularLayout
+    <me.panpf.swsv.CircularLayout
         android:id="@+id/layout_mainActivity_circular1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:clipChildren="false"/>
 </FrameLayout>
+
 ```
 详解：
->* SpiderWebScoreView用来显示蛛网图形
->* CircularLayout用来显示四周的文案
->* CircularLayout的`尺寸必须`和SpiderWebScoreView`一致`并且是层叠关系
->* CircularLayout的子View将会显示在圆圈的外面，因此`CircularLayout`和其`父FrameLayout`都必须设置`clipChildren为false`
->* 父FrameLayout还要比CircularLayout`大一圈`，大的这一圈就是用来显示CircularLayout的子View，具体大多少视你的需求而定
+* SpiderWebScoreView 用来显示蛛网图形
+* CircularLayout 用来显示四周的文案
+* CircularLayout 的 `尺寸` 必须和 SpiderWebScoreView `一致` 并且是层叠关系
+* CircularLayout 的子 View 将会显示在圆圈的外面，因此 `CircularLayout` 和其 `父 FrameLayout` 都必须设置 `clipChildren 为 false`
+* 父 FrameLayout 还要比 CircularLayout `大一圈`，大的这一圈就是用来显示 CircularLayout 的子 View，具体大多少视你的需求而定
 
-####3. Run time settings
-然后在代码中通过SpiderWebScoreView.setScores(float maxScore, float[] scores)方法设置最大分数以及所有分值即可
->* 有多少个分值（scores.length）蛛网图形就有多少个角
->* 默认分5层
+### 3. 在代码中设置分值
 
-最后根据你的需求往CircularLayout里面添加显示分数的View即可，数量和顺序必须同scores相同
+在代码中通过 SpiderWebScoreView.setScores(float maxScore, float[] scores) 方法设置最大分数以及所有分值即可
 
-如下：
+* 有多少个分值（scores.length）蛛网图形就有多少个角
+* 默认分 5 层
+
+然后根据你的需求往 CircularLayout 里面添加显示分数的 View 即可，数量和顺序必须同 scores 相同，如下：
+
 ```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -100,26 +109,26 @@ private void setup(SpiderWebScoreView spiderWebScoreView, CircularLayout circula
     }
 }
 
-public static class Score{
-    public float score;
-    public int iconId;
+private static class Score{
+    private float score;
+    private int iconId;
 
-    public Score(float score, int iconId) {
+    private Score(float score, int iconId) {
         this.score = score;
         this.iconId = iconId;
     }
 
-    public Score(float score) {
+    private Score(float score) {
         this.score = score;
     }
 }
 ```
 
-####4. Attributes
+### 4. 布局属性
 
 SpiderWebScoreView
 
-|Name|介绍|对应方法|缺省值|
+|属性名|介绍|对应方法|缺省值|
 |:--|:--|:--|:--|
 |angleCount|设置蛛网图形有多少个角|会在setScores(float, float[])方法中根据scores的长度来覆盖此参数|5|
 |hierarchyCount|设置蛛网图形有多少层|setHierarchyCount(int)|5|
@@ -133,22 +142,33 @@ SpiderWebScoreView
 
 CircularLayout
 
-|Name|介绍|对应方法|缺省值|
+|属性名|介绍|对应方法|缺省值|
 |:--|:--|:--|:--|
 |spacing|设置子View与圆圈之间的距离|setSpacing(int)|8dp|
 
-更多示例请参考sample源码
+更多示例请参考 sample 源码
 
-License
--------
-	Copyright (C) 2016 Peng fei Pan <sky@xiaopan.me>
+## License
+    Copyright (C) 2017 Peng fei Pan <sky@panpf.me>
 
-	Licensed under the Apache License, Version 2.0 (the "License");
-	you may not use this file except in compliance with the License.
-	You may obtain a copy of the License at
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-	  http://www.apache.org/licenses/LICENSE-2.0
+      http://www.apache.org/licenses/LICENSE-2.0
 
-	Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	See the License for the specific language governing permissions and limitations under the License.
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+[logo_image]: https://github.com/panpf/spider-web-score-view/raw/master/docs/icon.png
+[platform_image]: https://img.shields.io/badge/Platform-Android-brightgreen.svg
+[min_api_image]: https://img.shields.io/badge/API-9%2B-orange.svg
+[min_api_link]: https://android-arsenal.com/api?level=9
+[android_arsenal_image]: https://img.shields.io/badge/Android%20Arsenal-SpiderWebScoreView-green.svg?style=true
+[android_arsenal-link]: https://android_arsenal.com/details/1/4167
+[release_version_image]: https://img.shields.io/github/release/panpf/spider-web-score-view.svg
+[release_version-link]: https://github.com/panpf/spider-web-score-view/releases
+[sample_image]: https://github.com/panpf/spider-web-score-view/raw/master/docs/sample.png

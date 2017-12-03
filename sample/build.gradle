@@ -4,7 +4,7 @@ android {
     compileSdkVersion COMPILE_SDK_VERSION.toInteger()
 
     defaultConfig {
-        applicationId "me.xiaopan.swsvsample"
+        applicationId "me.panpf.swsv.sample"
         minSdkVersion MIN_SDK_VERSION.toInteger()
         targetSdkVersion TARGET_SDK_VERSION.toInteger()
         versionCode VERSION_CODE.toInteger()
@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:appcompat-v7:${ANDROID_SUPPORT_LIBRARY_VERSION}"
-    compile project(':spiderwebscoreview')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${ANDROID_SUPPORT_LIBRARY_VERSION}"
+    implementation project(':spider-web-score-view')
 }

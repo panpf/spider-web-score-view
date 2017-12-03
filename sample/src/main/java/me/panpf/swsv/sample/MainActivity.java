@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Peng fei Pan <sky@xiaopan.me>
+ * Copyright (C) 2016 Peng fei Pan <sky@panpf.me>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package me.xiaopan.swsvsample;
+package me.panpf.swsv.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
-import me.xiaopan.swsv.CircularLayout;
-import me.xiaopan.swsv.SpiderWebScoreView;
+import me.panpf.swsv.CircularLayout;
+import me.panpf.swsv.SpiderWebScoreView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,38 +50,38 @@ public class MainActivity extends AppCompatActivity {
         setup(spiderWebScoreView5, circularLayout5, new Score(7.0f, R.drawable.vip_icon7), new Score(8.0f, R.drawable.vip_icon8), new Score(5.0f, R.drawable.vip_icon5), new Score(5.0f, R.drawable.vip_icon5), new Score(8.0f, R.drawable.vip_icon8), new Score(7.0f, R.drawable.vip_icon7));
     }
 
-    private void setup(SpiderWebScoreView spiderWebScoreView, CircularLayout circularLayout, Score... scores){
+    private void setup(SpiderWebScoreView spiderWebScoreView, CircularLayout circularLayout, Score... scores) {
         spiderWebScoreView.setScores(10f, assembleScoreArray(scores));
 
         circularLayout.removeAllViews();
-        for(Score score : scores){
+        for (Score score : scores) {
             TextView scoreTextView = (TextView) LayoutInflater.from(getBaseContext()).inflate(R.layout.score, circularLayout, false);
-            scoreTextView.setText(score.score+"");
-            if(score.iconId != 0){
+            scoreTextView.setText(String.valueOf(score.score));
+            if (score.iconId != 0) {
                 scoreTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, score.iconId, 0);
             }
             circularLayout.addView(scoreTextView);
         }
     }
 
-    private float[] assembleScoreArray(Score... scores){
+    private float[] assembleScoreArray(Score... scores) {
         float[] scoreArray = new float[scores.length];
-        for(int w = 0; w < scores.length; w++){
+        for (int w = 0; w < scores.length; w++) {
             scoreArray[w] = scores[w].score;
         }
         return scoreArray;
     }
 
-    public static class Score{
-        public float score;
-        public int iconId;
+    private static class Score {
+        private float score;
+        private int iconId;
 
-        public Score(float score, int iconId) {
+        private Score(float score, int iconId) {
             this.score = score;
             this.iconId = iconId;
         }
 
-        public Score(float score) {
+        private Score(float score) {
             this.score = score;
         }
     }

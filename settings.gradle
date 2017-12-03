@@ -1,1 +1,1 @@
-include ':sample', ':spiderwebscoreview'
+include ':sample', ':spider-web-score-view'

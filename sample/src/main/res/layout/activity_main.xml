@@ -22,7 +22,7 @@
                 android:layout_weight="1"
                 android:clipChildren="false">
 
-                <me.xiaopan.swsv.SpiderWebScoreView
+                <me.panpf.swsv.SpiderWebScoreView
                     android:id="@+id/spiderWeb_mainActivity_1"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -30,7 +30,7 @@
                     app:angleCount="3"
                     app:hierarchyCount="3" />
 
-                <me.xiaopan.swsv.CircularLayout
+                <me.panpf.swsv.CircularLayout
                     android:id="@+id/layout_mainActivity_circular1"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:text="5.0"
                         android:textSize="10dp" />
-                </me.xiaopan.swsv.CircularLayout>
+                </me.panpf.swsv.CircularLayout>
             </FrameLayout>
 
             <FrameLayout
@@ -63,13 +63,13 @@
                 android:layout_weight="1"
                 android:clipChildren="false">
 
-                <me.xiaopan.swsv.SpiderWebScoreView
+                <me.panpf.swsv.SpiderWebScoreView
                     android:id="@+id/spiderWeb_mainActivity_2"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center" />
 
-                <me.xiaopan.swsv.CircularLayout
+                <me.panpf.swsv.CircularLayout
                     android:id="@+id/layout_mainActivity_circular2"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -105,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:text="8.0"
                         android:textSize="10dp" />
-                </me.xiaopan.swsv.CircularLayout>
+                </me.panpf.swsv.CircularLayout>
             </FrameLayout>
         </LinearLayout>
 
@@ -115,14 +115,14 @@
             android:layout_weight="1.3"
             android:clipChildren="false">
 
-            <me.xiaopan.swsv.SpiderWebScoreView
+            <me.panpf.swsv.SpiderWebScoreView
                 android:id="@+id/spiderWeb_mainActivity_5"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 app:angleCount="6"/>
 
-            <me.xiaopan.swsv.CircularLayout
+            <me.panpf.swsv.CircularLayout
                 android:id="@+id/layout_mainActivity_circular5"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -182,7 +182,7 @@
                     android:gravity="center"
                     android:textSize="10dp"
                     android:text="蓝钻"/>
-            </me.xiaopan.swsv.CircularLayout>
+            </me.panpf.swsv.CircularLayout>
         </FrameLayout>
 
         <LinearLayout
@@ -196,7 +196,7 @@
                 android:layout_weight="1"
                 android:clipChildren="false">
 
-                <me.xiaopan.swsv.SpiderWebScoreView
+                <me.panpf.swsv.SpiderWebScoreView
                     android:id="@+id/spiderWeb_mainActivity_3"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -204,7 +204,7 @@
                     app:angleCount="8"
                     app:hierarchyCount="8" />
 
-                <me.xiaopan.swsv.CircularLayout
+                <me.panpf.swsv.CircularLayout
                     android:id="@+id/layout_mainActivity_circular3"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -258,7 +258,7 @@
                         android:layout_height="wrap_content"
                         android:text="5.0"
                         android:textSize="10dp" />
-                </me.xiaopan.swsv.CircularLayout>
+                </me.panpf.swsv.CircularLayout>
             </FrameLayout>
 
             <FrameLayout
@@ -267,7 +267,7 @@
                 android:layout_weight="1"
                 android:clipChildren="false">
 
-                <me.xiaopan.swsv.SpiderWebScoreView
+                <me.panpf.swsv.SpiderWebScoreView
                     android:id="@+id/spiderWeb_mainActivity_4"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -275,7 +275,7 @@
                     app:angleCount="12"
                     app:hierarchyCount="8" />
 
-                <me.xiaopan.swsv.CircularLayout
+                <me.panpf.swsv.CircularLayout
                     android:id="@+id/layout_mainActivity_circular4"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -353,7 +353,7 @@
                         android:layout_height="wrap_content"
                         android:text="8.0"
                         android:textSize="10dp" />
-                </me.xiaopan.swsv.CircularLayout>
+                </me.panpf.swsv.CircularLayout>
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>
