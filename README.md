@@ -3,7 +3,7 @@
 ![Platform][platform_image]
 [![API][min_api_image]][min_api_link]
 [![Android Arsenal][android_arsenal_image]][android_arsenal-link]
-[![Release Version][release_version_image]][release_version-link]
+[![Release Version][version_icon]][version_link]
 
 SpiderWebScoreView 是一个蛛网评分控件，可以方便的显示任意层级任意维度的数据
 
@@ -16,17 +16,17 @@ SpiderWebScoreView 是一个蛛网评分控件，可以方便的显示任意层�
 
 ## 开始使用
 
-### 1. 导入 SpiderWebScoreView
+### 1. 从 mavenCentral 导入 SpiderWebScoreView
 
 在 app 的 build.gradle 文件的 dependencies 节点中加入依赖
 
-```groovy
+```kotlin
 dependencies{
-	implementation 'me.panpf:spider-web-score-view:$lastVersionName'
+	implementation("io.github.panpf.spiderwebscoreview:spiderwebscoreview:${LAST_VERSION}")
 }
 ```
 
-请自行替换 `$lastVersionName` 为最新的版本：[![Release Version][release_version_image]][release_version-link] `（不要v）`
+`${LAST_VERSION}`: [![Download][version_icon]][version_link] (No include 'v')
 
 最低支持 `Android2.3`
 
@@ -169,6 +169,6 @@ CircularLayout
 [min_api_link]: https://android-arsenal.com/api?level=9
 [android_arsenal_image]: https://img.shields.io/badge/Android%20Arsenal-SpiderWebScoreView-green.svg?style=true
 [android_arsenal-link]: https://android_arsenal.com/details/1/4167
-[release_version_image]: https://img.shields.io/github/release/panpf/spider-web-score-view.svg
-[release_version-link]: https://github.com/panpf/spider-web-score-view/releases
+[version_icon]: https://img.shields.io/maven-central/v/io.github.panpf.spiderwebscoreview/spiderwebscoreview
+[version_link]: https://repo1.maven.org/maven2/io/github/panpf/spiderwebscoreview/
 [sample_image]: https://github.com/panpf/spider-web-score-view/raw/master/docs/sample.png
